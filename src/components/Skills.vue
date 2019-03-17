@@ -1,29 +1,24 @@
 <template>
-  <div class="hello">
-
-    <div v-bind:class="{ alert: showAlert, 'another-class': showclass }"> class</div>
-    <div v-bind:class="{ alert: !showAlert, 'another-class': showclass}"> class</div>
-
-    <div v-bind:class="alertObject"> class </div>
-
-    <div v-bind:style="{backgroundColor: bgGreen}"> style </div>
-
-
+  <div class="container">
+    <div class="holder">
+      <ul>
+        <li v-for="(data, index) in skills" :key='index'>{{data.skill}}</li>
+      </ul>
+      <p>These are the skills that you possess.</p>
+    </div>
   </div>
 </template>
+
 
 <script> 
 export default {
   name: 'Skills',
   data(){
       return {
-        showAlert: true,
-        showclass: true,
-        alertObject: {
-          alert: true,
-          'another-class': true
-        },
-        bgGreen:'green'
+        skills:[
+          {skill:'Vue.js'},
+          {skill:'Angular.js'},
+        ]
       }
   }
 }  
