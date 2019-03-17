@@ -1,10 +1,13 @@
 <template>
   <div class="hello">
 
-    <div v-bind:class="{ alert: showAlert, 'another-class': showclass }"> alert</div>
-    <div v-bind:class="{ alert: !showAlert, 'another-class': showclass}"> alert</div>
+    <div v-bind:class="{ alert: showAlert, 'another-class': showclass }"> class</div>
+    <div v-bind:class="{ alert: !showAlert, 'another-class': showclass}"> class</div>
 
-    <div v-bind:class="alertObject"> alert</div>
+    <div v-bind:class="alertObject"> class </div>
+
+    <div v-bind:style="{backgroundColor: bgGreen}"> style </div>
+
 
   </div>
 </template>
@@ -20,6 +23,7 @@ export default {
           alert: true,
           'another-class': true
         },
+        bgGreen:'green'
       }
   }
 }  
