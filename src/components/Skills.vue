@@ -2,8 +2,10 @@
   <div class="container">
     <div class="holder">
       <form @submit.prevent="addSkill">
-        <input type="text" placeholder="Enter a skill you have.." v-model="skill">
-        <input type="checkbox" id="checkbox" v-model="checked">
+        <input type="text" placeholder="Enter a skill you have.." v-model="skill" v-validate="'min:5'" name="skill">
+        <transition name="alert-in">
+          <p class="alert" v-if="errors.has('skill')">{{errors.first('skill')}}</p>
+        </transition>
         <ul>
           <li v-for="(data, index) in skills" :key='index'>{{data.skill}}</li>
         </ul>
@@ -20,7 +22,6 @@ export default {
   data(){
       return {
         skill:'',
-        checked: false,
         skills:[
           {skill:'Vue.js'},
           {skill:'Angular.js'},
@@ -29,9 +30,12 @@ export default {
   },
   methods:{
     addSkill() {
-      this.skills.push({skill: this.skill});
-      this.skill = '';
-      console.log(this.checked); 
+      this.$validator.validateAll().then((result)=>{
+        if(result){
+          this.skills.push({skill: this.skill});
+          this.skill = '';
+        }
+      })
     }
   }
 }  

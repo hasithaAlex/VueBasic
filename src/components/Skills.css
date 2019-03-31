@@ -36,3 +36,10 @@ input {
     background-color: #323333;
     color: #687f7f;    
 }
+.alert{
+    background:#fdf2ce;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px;
+    margin-top: -20px;
+}
